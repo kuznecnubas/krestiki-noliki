@@ -1,15 +1,31 @@
 #include <iostream>
 using namespace std;
 
-void playerMove(char field[3][3]) {
+void playerMoveX(char field[3][3]) {
   int playerRow, playerCol;
   while (true) {
-    cout << "Выберите клетку в формате: 'номер ряда' 'номер столбца'" << endl;
+    cout << "Выберите клетку в формате: 'номер строки' 'номер столбца'" << endl;
     cin >> playerRow >> playerCol;
     playerRow -= 1;
     playerCol -= 1;
     if (field[playerRow][playerCol] == ' ') {
       field[playerRow][playerCol] = 'X';
+      break;
+    } else {
+      cout << endl << "Клетка занята" << endl;
+    }
+  }
+}
+
+void playerMoveO(char field[3][3]) {
+  int playerRow, playerCol;
+  while (true) {
+    cout << "Выберите клетку в формате: 'номер строки' 'номер столбца'" << endl;
+    cin >> playerRow >> playerCol;
+    playerRow -= 1;
+    playerCol -= 1;
+    if (field[playerRow][playerCol] == ' ') {
+      field[playerRow][playerCol] = 'O';
       break;
     } else {
       cout << endl << "Клетка занята" << endl;
@@ -136,38 +152,80 @@ short winCheck(char field[3][3]){
 
 int main() {
   short win;
+  short players;
   char field[3][3] = {
   {' ', ' ', ' '}, 
   {' ', ' ', ' '}, 
   {' ', ' ', ' '}
   };
 
+  while(true){
+    cout<<"Сколько игроков? (1/2): ";
+    cin>>players;
+    if(players != 1 && players != 2){
+      cout<<"Неверное количество игроков"<<endl;
+    }
+    else{
+      break;
+    }
+  }
   fieldPrint(field);
 
-  while (true) {
-    playerMove(field);
-    fieldPrint(field);
-    win = winCheck(field);
-    if (win == 1 || win == 2 || win == 3){
-      break;
-    }
-    
-    botMove(field);
-    fieldPrint(field);
-    win = winCheck(field);
-    if (win == 1 || win == 2 || win == 3){
-      break;
-    }
-  }
+  if(players == 1){
+    while (true) {
+      playerMoveX(field);
+      fieldPrint(field);
+      win = winCheck(field);
+      if (win == 1 || win == 2 || win == 3){
+        break;
+      }
 
-  if (win == 1) {
-    cout << "Победа";
-  } 
-  else if (win == 2) {
-    cout << "Поражение";
-  } 
-  else if (win == 3) {
-    cout << "Ничья";
+      botMove(field);
+      fieldPrint(field);
+      win = winCheck(field);
+      if (win == 1 || win == 2 || win == 3){
+        break;
+      }
+    }
+    if (win == 1) {
+      cout << "Победа";
+    } 
+    else if (win == 2) {
+      cout << "Поражение";
+    } 
+    else if (win == 3) {
+      cout << "Ничья";
+    }
   }
+  else{
+    while(true){
+      playerMoveX(field);
+      fieldPrint(field);
+      win = winCheck(field);
+      if (win == 1 || win == 2 || win == 3){
+        break;
+      }
+
+      playerMoveO(field);
+      fieldPrint(field);
+      win = winCheck(field);
+      if (win == 1 || win == 2 || win == 3){
+        break;
+      }
+    }
+    if (win == 1) {
+      cout << "Победа X";
+    } 
+    else if (win == 2) {
+      cout << "Победа О";
+    } 
+    else if (win == 3) {
+      cout << "Ничья";
+    }
+  }
+  
+  
+
+  
 
 }
