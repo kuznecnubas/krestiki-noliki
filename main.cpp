@@ -34,6 +34,7 @@ void playerMoveO(char field[3][3]) {
 }
 
 void fieldPrint(char field[3][3]) {
+  cout << "\033[2J\033[1;1H";
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
       cout << '[' << field[i][j] << ']';
@@ -153,6 +154,7 @@ short winCheck(char field[3][3]){
 int main() {
   short win;
   short players;
+  string input;
   char field[3][3] = {
   {' ', ' ', ' '}, 
   {' ', ' ', ' '}, 
@@ -187,15 +189,20 @@ int main() {
         break;
       }
     }
-    if (win == 1) {
-      cout << "Победа";
-    } 
-    else if (win == 2) {
-      cout << "Поражение";
-    } 
-    else if (win == 3) {
-      cout << "Ничья";
-    }
+      switch (win) {
+        case 1:
+            cout << "Победа";
+            cin >> input;
+            break;
+        case 2:
+            cout << "Поражение";
+            cin >> input;
+            break;
+        case 3:
+            cout << "Ничья";
+            cin >> input;
+            break;
+      }
   }
   else{
     while(true){
@@ -213,19 +220,19 @@ int main() {
         break;
       }
     }
-    if (win == 1) {
-      cout << "Победа X";
-    } 
-    else if (win == 2) {
-      cout << "Победа О";
-    } 
-    else if (win == 3) {
-      cout << "Ничья";
-    }
+      switch (win) {
+          case 1:
+              cout << "Победа X";
+              cin >> input;
+              break;
+          case 2:
+              cout << "Победа O";
+              cin >> input;
+              break;
+          case 3:
+              cout << "Ничья";
+              cin >> input;
+              break;
+      }
   }
-  
-  
-
-  
-
 }
