@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 using namespace std;
 
 void playerMoveX(char field[3][3]) {
@@ -177,6 +176,7 @@ short winCheck(char field[3][3]){
 
 int main() {
     system("chcp 65001");
+    cout << "\033[2J\033[1;1H";
     short win;
     short players;
     string input;
