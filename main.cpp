@@ -34,10 +34,18 @@ void playerMoveO(char field[3][3]) {
 }
 
 void fieldPrint(char field[3][3]) {
+    int help[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int numberOfSquare = 0;
     cout << "\033[2J\033[1;1H";
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            cout << '[' << field[i][j] << ']';
+            numberOfSquare++;
+            if (field[i][j] == ' '){
+                cout << '[' << numberOfSquare << ']';
+            }
+            else{
+                cout << '[' << field[i][j] << ']';
+            }
         }
         cout << endl;
     }
