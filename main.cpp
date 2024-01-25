@@ -4,6 +4,7 @@ using namespace std;
 void playerMoveX(char field[3][3]) {
     int playerSquare, currentSquare = 0;
     while (true) {
+        cout << "Ход X" << endl;
         cout << "Введите номер клетки: ";
         cin >> playerSquare;
         currentSquare = 0;
@@ -28,6 +29,7 @@ void playerMoveX(char field[3][3]) {
 void playerMoveO(char field[3][3]) {
     int playerSquare, currentSquare = 0;
     while (true) {
+        cout << "Ход O" << endl;
         cout << "Введите номер клетки: ";
         cin >> playerSquare;
         currentSquare = 0;
