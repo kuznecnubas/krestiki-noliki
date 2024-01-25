@@ -54,10 +54,10 @@ void fieldPrint(char field[3][3]) {
         for (int j = 0; j < 3; j++) {
             numberOfSquare++;
             if (field[i][j] == ' '){
-                cout << '[' << setw(2) << numberOfSquare << setw(2)<< ']';
+                cout << '[' << " " << numberOfSquare << " "<< ']';
             }
             else{
-                cout << setw(2)<< '[' << field[i][j] <<']'<< setw(2);
+                cout << ' '<< '[' << field[i][j] <<']'<< " ";
             }
         }
         cout << endl;
