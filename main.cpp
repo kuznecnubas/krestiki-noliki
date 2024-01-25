@@ -2,34 +2,46 @@
 using namespace std;
 
 void playerMoveX(char field[3][3]) {
-    int playerRow, playerCol;
+    int playerSquare, currentSquare = 0;
     while (true) {
-        cout << "Выберите клетку в формате: 'номер строки' 'номер столбца'" << endl;
-        cin >> playerRow >> playerCol;
-        playerRow -= 1;
-        playerCol -= 1;
-        if (field[playerRow][playerCol] == ' ') {
-            field[playerRow][playerCol] = 'X';
-            break;
-        } else {
-            cout << endl << "Клетка занята" << endl;
+        cout << "Введите номер клетки: ";
+        cin >> playerSquare;
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
+                currentSquare++;
+                if (playerSquare == currentSquare){
+                    if (field[i][j] == ' ') {
+                        field[i][j] = 'X';
+                        return;
+                    } else {
+                        cout << endl << "Клетка занята" << endl;
+                    }
+                }
+            }
         }
+
     }
 }
 
 void playerMoveO(char field[3][3]) {
-    int playerRow, playerCol;
+    int playerSquare, currentSquare = 0;
     while (true) {
-        cout << "Выберите клетку в формате: 'номер строки' 'номер столбца'" << endl;
-        cin >> playerRow >> playerCol;
-        playerRow -= 1;
-        playerCol -= 1;
-        if (field[playerRow][playerCol] == ' ') {
-            field[playerRow][playerCol] = 'O';
-            break;
-        } else {
-            cout << endl << "Клетка занята" << endl;
+        cout << "Введите номер клетки: ";
+        cin >> playerSquare;
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
+                currentSquare++;
+                if (playerSquare == currentSquare){
+                    if (field[i][j] == ' ') {
+                        field[i][j] = 'O';
+                        return;
+                    } else {
+                        cout << endl << "Клетка занята" << endl;
+                    }
+                }
+            }
         }
+
     }
 }
 
