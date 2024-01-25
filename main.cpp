@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 void playerMoveX(char field[3][3]) {
@@ -53,10 +54,10 @@ void fieldPrint(char field[3][3]) {
         for (int j = 0; j < 3; j++) {
             numberOfSquare++;
             if (field[i][j] == ' '){
-                cout << '[' << numberOfSquare << ']';
+                cout << '[' << setw(2) << numberOfSquare << setw(2)<< ']';
             }
             else{
-                cout << '[' << field[i][j] << ']';
+                cout << setw(2)<< '[' << field[i][j] <<']'<< setw(2);
             }
         }
         cout << endl;
