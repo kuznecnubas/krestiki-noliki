@@ -7,6 +7,7 @@ void playerMoveX(char field[3][3]) {
     while (true) {
         cout << "Введите номер клетки: ";
         cin >> playerSquare;
+        currentSquare = 0;
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
                 currentSquare++;
@@ -14,7 +15,8 @@ void playerMoveX(char field[3][3]) {
                     if (field[i][j] == ' ') {
                         field[i][j] = 'X';
                         return;
-                    } else {
+                    }
+                    else {
                         cout << endl << "Клетка занята" << endl;
                     }
                 }
@@ -29,6 +31,7 @@ void playerMoveO(char field[3][3]) {
     while (true) {
         cout << "Введите номер клетки: ";
         cin >> playerSquare;
+        currentSquare = 0;
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
                 currentSquare++;
@@ -176,84 +179,132 @@ int main() {
     short win;
     short players;
     string input;
-    char field[3][3] = {
-            {' ', ' ', ' '},
-            {' ', ' ', ' '},
-            {' ', ' ', ' '}
-    };
-
-    while(true){
-        cout<<"Сколько игроков? (1/2): ";
-        cin>>players;
-        if(players != 1 && players != 2){
-            cout<<"Неверное количество игроков"<<endl;
-        }
-        else{
-            break;
-        }
-    }
-    fieldPrint(field);
-
-    if(players == 1){
+    while(true) {
+        char field[3][3] = {
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '}
+        };
         while (true) {
-            playerMoveX(field);
-            fieldPrint(field);
-            win = winCheck(field);
-            if (win == 1 || win == 2 || win == 3){
+            cout << "Сколько игроков? (1/2): ";
+            cin >> players;
+            if (players != 1 && players != 2) {
+                cout << "Неверное количество игроков" << endl;
+            } else {
                 break;
             }
+        }
+        fieldPrint(field);
 
-            botMove(field);
-            fieldPrint(field);
-            win = winCheck(field);
-            if (win == 1 || win == 2 || win == 3){
-                break;
-            }
-        }
-        switch (win) {
-            case 1:
-                cout << "Победа";
-                cin >> input;
-                break;
-            case 2:
-                cout << "Поражение";
-                cin >> input;
-                break;
-            case 3:
-                cout << "Ничья";
-                cin >> input;
-                break;
-        }
-    }
-    else{
-        while(true){
-            playerMoveX(field);
-            fieldPrint(field);
-            win = winCheck(field);
-            if (win == 1 || win == 2 || win == 3){
-                break;
-            }
+        if (players == 1) {
+            while (true) {
+                playerMoveX(field);
+                fieldPrint(field);
+                win = winCheck(field);
+                if (win == 1 || win == 2 || win == 3) {
+                    break;
+                }
 
-            playerMoveO(field);
-            fieldPrint(field);
-            win = winCheck(field);
-            if (win == 1 || win == 2 || win == 3){
-                break;
+                botMove(field);
+                fieldPrint(field);
+                win = winCheck(field);
+                if (win == 1 || win == 2 || win == 3) {
+                    break;
+                }
+            }
+            switch (win) {
+                case 1:
+                    cout << "Победа" << endl;
+                    cout << "Хотите сыграть ещё раз? (д/н): ";
+                    while (true) {
+                        cin >> input;
+                        if (input == "д") {
+                            break;
+                        } else if (input == "н") {
+                            return 1;
+                        }
+                    }
+                    break;
+                case 2:
+                    cout << "Поражение" << endl;
+                    cout << "Хотите сыграть ещё раз? (д/н): ";
+                    while (true) {
+                        cin >> input;
+                        if (input == "д") {
+                            break;
+                        } else if (input == "н") {
+                            return 1;
+                        }
+                    }
+                    break;
+                case 3:
+                    cout << "Ничья" << endl;
+                    cout << "Хотите сыграть ещё раз? (д/н): ";
+                    while (true) {
+                        cin >> input;
+                        if (input == "д") {
+                            break;
+                        } else if (input == "н") {
+                            return 1;
+                        }
+                    }
+                    break;
             }
         }
-        switch (win) {
-            case 1:
-                cout << "Победа X";
-                cin >> input;
-                break;
-            case 2:
-                cout << "Победа O";
-                cin >> input;
-                break;
-            case 3:
-                cout << "Ничья";
-                cin >> input;
-                break;
+        else {
+            while (true) {
+                playerMoveX(field);
+                fieldPrint(field);
+                win = winCheck(field);
+                if (win == 1 || win == 2 || win == 3) {
+                    break;
+                }
+
+                playerMoveO(field);
+                fieldPrint(field);
+                win = winCheck(field);
+                if (win == 1 || win == 2 || win == 3) {
+                    break;
+                }
+            }
+            switch (win) {
+                case 1:
+                    cout << "Победа X" << endl;
+                    cout << "Хотите сыграть ещё раз? (д/н): ";
+                    while (true) {
+                        cin >> input;
+                        if (input == "д") {
+                            break;
+                        } else if (input == "н") {
+                            return 1;
+                        }
+                    }
+                    break;
+                case 2:
+                    cout << "Победа O" << endl;
+                    cout << "Хотите сыграть ещё раз? (д/н): ";
+                    while (true) {
+                        cin >> input;
+                        if (input == "д") {
+                            break;
+                        } else if (input == "н") {
+                            return 1;
+                        }
+                    }
+                    break;
+                case 3:
+                    cout << "Ничья" << endl;
+                    cout << "Хотите сыграть ещё раз? (д/н): ";
+                    while (true) {
+                        cin >> input;
+                        if (input == "д") {
+                            break;
+                        } else if (input == "н") {
+                            return 1;
+                        }
+                    }
+                    break;
+            }
         }
     }
 }
