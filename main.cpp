@@ -176,6 +176,7 @@ short winCheck(char field[3][3]){
 }
 
 int main() {
+    system("chcp 65001");
     short win;
     short players;
     string input;
